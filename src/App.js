@@ -10,7 +10,7 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
 `;
 
 function App() {
