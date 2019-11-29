@@ -27,7 +27,7 @@ export default function FoodList() {
   return (
     <div>
       {foodItems.map(item => (
-        <Card>
+        <Card key={item.id}>
           <div>{item.cat}</div>
           <div>{item.what}</div>
           <div>{item.date}</div>
