@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import plus from "../assets/plus.svg";
 
-const HeadlineContainer = styled.h1`
+const HeadlineContainer = styled.div`
   background-color: #777777;
   text-align: center;
   margin: 0px;
