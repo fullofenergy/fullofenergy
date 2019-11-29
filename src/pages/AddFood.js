@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -21,15 +21,30 @@ export default function AddFood() {
   const [date, setDate] = useState("");
   const [kcal, setKcal] = useState(null);
 
-  console.log(what, date, kcal);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await fetch("http://localhost:5678/items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ what, date, kcal })
+    });
 
+    setWhat("");
+    setDate("");
+    setKcal(null);
+    console.log(what, date, kcal);
+  }
+
+  console.log(what, date, kcal);
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <h2>Was gab's?</h2>
-      <div>
+      {/* <div>
         <Button>Food</Button>
         <Button>Drink</Button>
-      </div>
+      </div> */}
       <input
         type="text"
         placeholder="Was genau?"
