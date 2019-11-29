@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const Form = styled.div`
@@ -17,6 +17,12 @@ const Button = styled.button`
 `;
 
 export default function AddFood() {
+  const [what, setWhat] = useState("");
+  const [date, setDate] = useState("");
+  const [kcal, setKcal] = useState(null);
+
+  console.log(what, date, kcal);
+
   return (
     <Form>
       <h2>Was gab's?</h2>
@@ -24,9 +30,19 @@ export default function AddFood() {
         <Button>Food</Button>
         <Button>Drink</Button>
       </div>
-      <input type="text" placeholder="Was genau?"></input>
-      <input type="date"></input>
-      <input placeholder="kcal"></input>
+      <input
+        type="text"
+        placeholder="Was genau?"
+        onChange={event => setWhat(event.target.value)}
+      ></input>
+      <input
+        type="date"
+        onChange={event => setDate(event.target.value)}
+      ></input>
+      <input
+        placeholder="kcal"
+        onChange={event => setKcal(event.target.value)}
+      ></input>
       <Button>Submit</Button>
     </Form>
   );
