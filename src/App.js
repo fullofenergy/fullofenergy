@@ -19,7 +19,7 @@ function App() {
       <GlobalStyles />
       <Router>
         <Container>
-          <Header></Header>
+          <Header />
           <Switch>
             <Route exact path="/">
               <FoodList />

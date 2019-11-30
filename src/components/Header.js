@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import plus from "../assets/plus.svg";
+import { Link } from "react-router-dom";
 
 const HeadlineContainer = styled.div`
   background-color: #777777;
@@ -25,14 +26,30 @@ const Image = styled.img`
   width: 50px;
   height: 50px;
 `;
+let site = "/add";
 
 export default function Header() {
+  const [page, setPage] = React.useState(false);
+
+  function handleClick() {
+    setPage(!page);
+    if (page === true) {
+      site = "/add";
+    } else {
+      site = "/";
+    }
+  }
+
+  console.log(page);
+  console.log(site);
   return (
     <>
       <HeadlineContainer>
         <Headline>#FullOfEnergy</Headline>
-        <Button>
-          <Image src={plus} />
+        <Button onClick={handleClick}>
+          <Link to={site}>
+            <Image src={plus} />
+          </Link>
         </Button>
       </HeadlineContainer>
     </>
