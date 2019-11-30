@@ -20,6 +20,7 @@ export default function AddFood() {
   const [what, setWhat] = useState("");
   const [date, setDate] = useState("");
   const [kcal, setKcal] = useState(null);
+  const [cat, setCat] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -28,23 +29,43 @@ export default function AddFood() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ what, date, kcal })
+      body: JSON.stringify({ cat, what, date, kcal })
     });
 
     setWhat("");
     setDate("");
     setKcal(null);
-    console.log(what, date, kcal);
+    setCat("");
+    console.log(what, date, kcal, cat);
   }
 
-  console.log(what, date, kcal);
+  console.log(what, date, kcal, cat);
   return (
     <Form onSubmit={handleSubmit}>
       <h2>Was gab's?</h2>
-      {/* <div>
-        <Button>Food</Button>
-        <Button>Drink</Button>
-      </div> */}
+
+      <div>
+        <input
+          type="radio"
+          id="food"
+          name="cat"
+          value="food"
+          onChange={event => setCat(event.target.value)}
+        />
+        <label>Food</label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="drink"
+          name="cat"
+          value="drink"
+          onChange={event => setCat(event.target.value)}
+        />
+        <label>Drink</label>
+      </div>
+
       <input
         type="text"
         placeholder="Was genau?"
