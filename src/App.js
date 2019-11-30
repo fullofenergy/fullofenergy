@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import GlobalStyles from "./GlobalStyles";
 import styled from "@emotion/styled";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddFood from "./pages/AddFood";
 import FoodList from "./pages/FoodList";
 
@@ -19,7 +19,7 @@ function App() {
       <GlobalStyles />
       <Router>
         <Container>
-          <Header></Header>
+          <Header />
           <Switch>
             <Route exact path="/">
               <FoodList />
