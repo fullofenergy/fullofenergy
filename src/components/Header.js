@@ -2,30 +2,45 @@ import React from "react";
 import styled from "@emotion/styled";
 import plus from "../assets/plus.svg";
 import { Link } from "react-router-dom";
+import flash from "../assets/flash.svg";
 
 const HeadlineContainer = styled.div`
-  background-color: #777777;
+  background-color: ${props => props.theme.default.background};
   text-align: center;
   margin: 0px;
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Headline = styled.h1`
   font-size: 1.5em;
   font-family: sans-serif;
+  margin-left: 20px;
+  font-family: "Quicksand", sans-serif;
+  text-shadow: 3px 3px 4px #777;
 `;
 
 const Button = styled.button`
   border: 0px solid #ffffff;
-  border-radius: 10px;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  background-color: ${props => props.theme.default.background};
 `;
 
-const Image = styled.img`
-  width: 50px;
-  height: 50px;
+const ButtonImage = styled.img`
+  width: 30px;
+  height: 30px;
 `;
+
+const LogoImage = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
 let site = "/add";
 
 export default function Header() {
@@ -45,10 +60,13 @@ export default function Header() {
   return (
     <>
       <HeadlineContainer>
-        <Headline>#FullOfEnergy</Headline>
+        <Headline>
+          #FullOfEnergy <LogoImage src={flash}></LogoImage>
+        </Headline>
+
         <Button onClick={handleClick}>
           <Link to={site}>
-            <Image src={plus} />
+            <ButtonImage src={plus} />
           </Link>
         </Button>
       </HeadlineContainer>
