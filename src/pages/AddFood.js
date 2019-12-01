@@ -8,12 +8,34 @@ const Form = styled.form`
   justify-content: space-around;
   height: 100vh;
   width: 100vw;
+  align-items: center;
+`;
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+
+const InputField = styled.input`
+  background-color: ${props => props.theme.default.secondary};
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 80%;
+  text-align: center;
+  margin: 20px;
+  color: ${props => props.theme.default.highlight};
 `;
 
 const Button = styled.button`
-  height: 30px;
-  width: 30px;
-  background-color: red;
+  height: 20px;
+  width: 60px;
+  background-color: ${props => props.theme.default.highlight};
+  border-radius: 5px;
+  outline: none;
+  border: none;
 `;
 
 export default function AddFood() {
@@ -42,43 +64,42 @@ export default function AddFood() {
   console.log(what, date, kcal, cat);
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Was gab's?</h2>
-
-      <div>
-        <input
-          type="radio"
-          id="food"
-          name="cat"
-          value="food"
-          onChange={event => setCat(event.target.value)}
-        />
-        <label>Food</label>
-      </div>
-
-      <div>
-        <input
-          type="radio"
-          id="drink"
-          name="cat"
-          value="drink"
-          onChange={event => setCat(event.target.value)}
-        />
-        <label>Drink</label>
-      </div>
-
-      <input
+      <h2>Are you #FullOfEnergy?</h2>
+      <Container>
+        <div>
+          <input
+            type="radio"
+            id="food"
+            name="cat"
+            value="food"
+            onChange={event => setCat(event.target.value)}
+          />
+          <label>Food</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="drink"
+            name="cat"
+            value="drink"
+            onChange={event => setCat(event.target.value)}
+          />
+          <label>Drink</label>
+        </div>
+      </Container>
+      <InputField
         type="text"
-        placeholder="Was genau?"
+        placeholder="What did you eat?"
         onChange={event => setWhat(event.target.value)}
-      ></input>
-      <input
+      ></InputField>
+      <InputField
         type="date"
         onChange={event => setDate(event.target.value)}
-      ></input>
-      <input
+      ></InputField>
+      <InputField
         placeholder="kcal"
         onChange={event => setKcal(event.target.value)}
-      ></input>
+      ></InputField>
       <Button>Submit</Button>
     </Form>
   );

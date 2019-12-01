@@ -1,6 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
-import themes from "./utils/themes";
+import theme from "./utils/themes";
 
 export default function GlobalStyles() {
   return (
@@ -12,9 +12,10 @@ export default function GlobalStyles() {
           box-sizing: border-box;
         }
         body {
-          background-color: ${themes.default.primary};
+          background-color: ${theme.default.basic};
           margin: auto;
           padding: 0px;
+          font-family: "Quicksand", sans-serif;
         }
       `}
     />
