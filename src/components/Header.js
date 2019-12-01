@@ -55,8 +55,6 @@ export default function Header() {
     }
   }
 
-  console.log(page);
-  console.log(site);
   return (
     <>
       <HeadlineContainer>
