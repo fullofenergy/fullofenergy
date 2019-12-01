@@ -10,12 +10,31 @@ const Card = styled.div`
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
-
   margin-top: 20px;
   border-radius: 10px;
 `;
 
+const DeleteButton = styled.button`
+  width: 50px;
+  margin: 0 auto 0 auto;
+  background: ${props => props.theme.default.secondary};
+  border: 2px solid white;
+  border-radius: 5px;
+`;
+
 export function ItemCard({ id, cat, what, date, kcal }) {
+  const [remove, setRemove] = React.useState();
+
+  async function handleRemove() {
+    await fetch(`http://localhost:5678/items/${remove}`, {
+      method: "DELETE"
+    });
+  }
+
+  React.useEffect(() => {
+    handleRemove();
+  }, [remove]);
+
   return (
     <div>
       <Card key={id} id={id}>
@@ -23,6 +42,15 @@ export function ItemCard({ id, cat, what, date, kcal }) {
         <div>What? {what}</div>
         <div>Date? {date}</div>
         <div>Kcal? {kcal}</div>
+        <DeleteButton
+          value={id}
+          onClick={() => {
+            setRemove(id);
+            window.location.reload();
+          }}
+        >
+          Delete
+        </DeleteButton>
       </Card>
     </div>
   );
