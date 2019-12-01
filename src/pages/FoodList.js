@@ -19,7 +19,7 @@ export default function FoodList() {
       {foodItems.map(item => (
         <ItemCard
           id={item.id}
-          key={item.key}
+          key={item.id}
           cat={item.cat}
           what={item.what}
           date={item.date}
